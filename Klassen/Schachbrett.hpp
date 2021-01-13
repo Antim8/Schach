@@ -48,15 +48,13 @@ Schachbrett::Schachbrett() {
         
     }
     
-    /*for(int i = 8; i > 0; i--) {
+    for(int i = 8; i > 0; i--) {
         
         Text *tmptext;
-        string letters = "ABCDEFGH";
-        string letter = letters[8-i] + "";
-        tmptext = new Text(letter, 37 + 60 * (9 - i), 580, feld); 
-        //tmptext = new Text(char(("" + 'A' + (8 - i))), 37 + 60 * (9 - i), 580, feld); 
+        string letters[] = {"A", "B", "C", "D", "E", "F", "G", "H"};
+        tmptext = new Text(letters[8-i], 37 + 60 * (9 - i), 580, feld);  
         
-    }*/
+    }
     
     Text *tmpText = new Text("weiß", 620, 40, feld);
     tmpText = new Text("schwarz", 740, 40, feld);
