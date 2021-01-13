@@ -1,5 +1,7 @@
+#ifndef BAUERN_HPP
+#define BAUERN_HPP
 #include "Figur.hpp"
-#include <stríng>
+#include <string>
 
 class Bauer : Figur {
     
@@ -9,7 +11,7 @@ class Bauer : Figur {
     public:
         
         Bauer();
-        Bauer();
+        Bauer(int row, int coll);
         
     
 };
@@ -26,3 +28,5 @@ Bauer::Bauer(int row, int coll) {
     desc = "b";
     
 };
+
+#endif
