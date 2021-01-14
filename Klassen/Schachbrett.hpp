@@ -3,16 +3,20 @@
 
 #include <algoviz/SVG.hpp>
 
+
+
 class Schachbrett {
     
     private:
     
         SVG *feld;
         Rect* tiles[13][10];
+        string order[8][8][2];
     
     public: 
         
         Schachbrett();
+        void startingOrder();
     
 };
             
@@ -58,6 +62,29 @@ Schachbrett::Schachbrett() {
     
     Text *tmpText = new Text("weiß", 620, 40, feld);
     tmpText = new Text("schwarz", 740, 40, feld);
+    
+    
+    
+};
+
+void Schachbrett::startingOrder() {
+    
+    string storder[] = {"t", "s", "l", "d", "k", "l", "s", "t"}; 
+    
+    for ( int i = 0; i < 2; i++) {
+        for (int j = 0; j < 8; j++) {
+            
+            order[8 * i][j][0] = storder[j];
+            
+            if (!i) {
+                order[8 * i][j][1] = "b";
+            } else {
+                order[8 * i][j][1] = "w";
+            }
+            
+            //TODO: Bauern hinzufügen
+        }
+    }
     
 }
       

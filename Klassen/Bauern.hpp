@@ -1,12 +1,10 @@
 #ifndef BAUERN_HPP
 #define BAUERN_HPP
 #include "Figur.hpp"
-#include <string>
 
 class Bauer : Figur {
     
     private: 
-        std::string desc;
     
     public:
         
