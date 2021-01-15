@@ -1,5 +1,5 @@
-#ifndef BAUERN_HPP
-#define BAUERN_HPP
+#ifndef BAUER_HPP
+#define BAUER_HPP
 #include "Figur.hpp"
 
 class Bauer : Figur {

@@ -74,15 +74,19 @@ void Schachbrett::startingOrder() {
     for ( int i = 0; i < 2; i++) {
         for (int j = 0; j < 8; j++) {
             
-            order[8 * i][j][0] = storder[j];
+            order[7 * i][j][0] = storder[j];
             
-            if (!i) {
-                order[8 * i][j][1] = "b";
+            if (i) {
+                order[7 * i][j][1] = "b";
             } else {
-                order[8 * i][j][1] = "w";
+                order[7 * i][j][1] = "w";
             }
             
-            //TODO: Bauern hinzufügen
+            //TODO: Bauern hinzu
+            order[6][j][0] = "b";
+            order[6][j][1] = "b";
+            order[1][j][0] = "b";
+            order[1][j][1] = "w";
         }
     }
     
