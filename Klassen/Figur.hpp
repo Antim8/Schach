@@ -1,6 +1,7 @@
 #ifndef FIGUR_HPP
 #define FIGUR_HPP
 
+#include <algoviz/SVG.hpp> 
 #include <string>
 class Figur {
     
