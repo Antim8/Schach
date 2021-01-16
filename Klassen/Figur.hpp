@@ -11,7 +11,8 @@ class Figur {
         std::string desc;
         // true = white false = black
         bool color;
-        
+        Image *pic;
+    
     public:
         
         Figur();
