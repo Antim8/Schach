@@ -25,21 +25,21 @@ Schachbrett::Schachbrett() {
         
     feld = new SVG(800, 800, "Schachbrett");
     for (int i = 0; i < 13; i++) {
-   
         for (int j = 0; j < 10; j++) {
-            tiles[i][j] = new Rect(10 + i * 60, 10 + j * 60, 60, 60, feld);
+            
+            tiles[i][j] = new Rect(10 + i * 60, 550 - j * 60, 60, 60, feld);
             
             tiles[i][j]->setFill("lightgrey");
             tiles[i][j]->setColor("transparent");
-        
+            
             if( i > 0 && i < 9 && j > 0 && j < 9) {
             
-                if( (i % 2 != 0 &&  j % 2 != 0) || (i % 2 == 0 && j % 2 == 0)) {
+                if( (i % 2 == 0 &&  j % 2 == 0) || (i % 2 != 0 && j % 2 != 0)) {
                 
-                    tiles[i][j]->setFill(255, 211, 155, 0.7);
+                    tiles[i][j]->setFill(139, 69, 19, 0.7);
                 } else {
                     
-                    tiles[i][j]->setFill(139, 69, 19, 0.7);
+                    tiles[i][j]->setFill(255, 211, 155, 0.7);
                 }
             }
         }
