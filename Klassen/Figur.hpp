@@ -1,6 +1,7 @@
 #ifndef FIGUR_HPP
 #define FIGUR_HPP
 
+#include <algoviz/SVG.hpp> 
 #include <string>
 class Figur {
     
@@ -11,7 +12,8 @@ class Figur {
         std::string desc;
         // true = white false = black
         bool color;
-        
+        Image *pic;
+    
     public:
         
         Figur();
