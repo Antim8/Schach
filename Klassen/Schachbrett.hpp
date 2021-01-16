@@ -11,7 +11,7 @@ class Schachbrett {
     
         SVG *feld;
         Rect* tiles[13][10];
-        string order[8][8][2];
+        string order[8][8][2] = {""};
     
     public: 
         
