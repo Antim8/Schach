@@ -25,9 +25,9 @@ Turm::Turm(int row, int coll, bool color, SVG *view) {
     this->color = color;
     
     if (color) {
-        pic = new Image("../Bilder/White/tower.png", coll * 60 + 40, 550 - row * 60 - 30, 60, 60, view);
+        pic = new Image("Bilder/White/tower.png", coll * 60 + 40, 610 - row * 60 - 30, 60, 60, view);
     } else { 
-        pic = new Image("../Bilder/Black/tower.png", coll * 60 + 40, 550 - row * 60 - 30, 60, 60, view);
+        pic = new Image("Bilder/Black/tower.png", coll * 60 + 40, 610 - row * 60 - 30, 60, 60, view);
     }
     
 };
