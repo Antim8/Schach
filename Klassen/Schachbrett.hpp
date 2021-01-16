@@ -17,6 +17,7 @@ class Schachbrett {
         
         Schachbrett();
         void startingOrder();
+        SVG *getFeld();
     
 };
             
@@ -90,6 +91,10 @@ void Schachbrett::startingOrder() {
         }
     }
     
-}
+};
+
+SVG *Schachbrett::getFeld() {
+    return feld;
+}    
       
 #endif
