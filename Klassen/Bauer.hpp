@@ -9,7 +9,7 @@ class Bauer : Figur {
     public:
         
         Bauer();
-        Bauer(int row, int coll);
+        Bauer(int row, int coll, bool color, SVG *view);
         
     
 };
@@ -20,10 +20,17 @@ Bauer::Bauer() {
     desc = "b";
 };
 
-Bauer::Bauer(int row, int coll) {
+Bauer::Bauer(int row, int coll, bool color, SVG *view) {
     this->row = row;
     this->coll = coll;
     desc = "b";
+    this->color = color;
+    
+    if (color) {
+        pic = new Image("../Bilder/White/pawn.png", coll * 60 + 40, 550 - row * 60 - 30, 60, 60, view);
+    } else { 
+        pic = new Image("../Bilder/Black/pawn.png", coll * 60 + 40, 550 - row * 60 - 30, 60, 60, view);
+    }
     
 };
 
