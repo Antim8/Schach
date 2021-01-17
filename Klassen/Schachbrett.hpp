@@ -18,6 +18,9 @@ class Schachbrett {
         Schachbrett();
         void startingOrder();
         SVG *getFeld();
+        void colorTile(int row, int coll);
+        void resetColor(int row, int coll);
+        string getTileFig( int row, int coll);
     
 };
             
@@ -95,6 +98,26 @@ void Schachbrett::startingOrder() {
 
 SVG *Schachbrett::getFeld() {
     return feld;
-}    
+};
+
+void Schachbrett::colorTile(int row, int coll) {
+    if(row > 0 && coll > 0)
+        tiles[row][coll]->setColor("blue");
+        
+};
+
+void Schachbrett::resetColor(int row, int coll) {
+    if(row > 0 && coll > 0)
+        tiles[row][coll]->setColor("transparent");
+        
+}
+
+
+string Schachbrett::getTileFig(int row, int coll) {
+
+    return (order[row - 1][coll - 1][0] + order[row - 1][coll - 1][1]); 
+    
+};
+
       
 #endif
