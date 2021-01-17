@@ -5,11 +5,12 @@
 class Bauer : Figur {
     
     private: 
-    
+        
     public:
         
         Bauer();
         Bauer(int row, int coll, bool color, SVG *view);
+        int[][]getPossibleMovement();
         
     
 };
@@ -33,5 +34,10 @@ Bauer::Bauer(int row, int coll, bool color, SVG *view) {
     }
     
 };
+//TODO
+int[][] Bauer::getPossibleMovement() {
+    int dump[][] = {{1, 0}, {2, 0}, {1, 1} 
+    return 
+}
 
 #endif
