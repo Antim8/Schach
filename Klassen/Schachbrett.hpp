@@ -73,7 +73,7 @@ Schachbrett::Schachbrett() {
 
 void Schachbrett::startingOrder() {
     
-    string storder[] = {"t", "s", "l", "d", "k", "l", "s", "t"}; 
+    string storder[] = {"t0", "s0", "l0", "d ", "k ", "l1", "s1", "t1"}; 
     
     for ( int i = 0; i < 2; i++) {
         for (int j = 0; j < 8; j++) {
@@ -87,9 +87,9 @@ void Schachbrett::startingOrder() {
             }
             
             //TODO: Bauern hinzu
-            order[6][j][0] = "b";
+            order[6][j][0] = "b" + to_string(j);
             order[6][j][1] = "b";
-            order[1][j][0] = "b";
+            order[1][j][0] = "b" + to_string(j);
             order[1][j][1] = "w";
         }
     }
