@@ -10,7 +10,8 @@ class Bauer : Figur {
         
         Bauer();
         Bauer(int row, int coll, bool color, SVG *view);
-        //int[][]getPossibleMovement();
+        
+        void setPos(int row, int coll);
         
     
 };
@@ -34,10 +35,12 @@ Bauer::Bauer(int row, int coll, bool color, SVG *view) {
     }
     
 };
-//TODO
-/*int[][] Bauer::getPossibleMovement() {
-    int dump[][] = {{1, 0}, {2, 0}, {1, 1} 
-    return 
-}*/
+//TODO: Order update in Schachbrett
+//TODO: coll und row bei allen tauschen
+void Bauer::setPos(int coll, int row) {
+    this-> row = row;
+    this-> coll = coll;
+    pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
+}
 
 #endif

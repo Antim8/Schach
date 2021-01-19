@@ -3,6 +3,8 @@
 
 #include <algoviz/SVG.hpp> 
 #include <string>
+#include "Schachbrett.hpp"
+
 class Figur {
     
   
@@ -26,6 +28,7 @@ class Figur {
         bool getColor();
     
         void setPos(int row, int coll);
+        void showMovement();
                
 };
 
@@ -62,6 +65,7 @@ bool Figur::getColor() {
 void Figur::setPos(int row, int coll) {
     this->row = row;
     this->coll = coll;
+    pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
 };
     
 #endif

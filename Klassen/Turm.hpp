@@ -9,6 +9,8 @@ class Turm : Figur {
     
         Turm();
         Turm(int row, int coll, bool color, SVG *view);
+        void showMovement(Schachbrett *brett);
+        void setPos(int row, int coll);
     
 };
 
@@ -31,4 +33,17 @@ Turm::Turm(int row, int coll, bool color, SVG *view) {
     }
     
 };
+
+void Turm::showMovement(Schachbrett *brett) {
+ 
+    ;
+    
+}
+
+void Turm::setPos(int row, int coll) {
+    this-> row = row;
+    this-> coll = coll;
+    pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
+};
+
 #endif

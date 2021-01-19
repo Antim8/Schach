@@ -9,7 +9,7 @@ class Springer : Figur {
     
         Springer();
         Springer(int row, int coll, bool color, SVG *view);
-    
+        void setPos(int row, int coll);
 };
 
 Springer::Springer() {
@@ -30,5 +30,11 @@ Springer::Springer(int row, int coll, bool color, SVG *view) {
         pic = new Image("Bilder/Black/knight.png", coll * 60 + 40, 610 - row * 60 - 30, 60, 60, view);
     }
     
+};
+
+void Springer::setPos(int row, int coll) {
+    this-> row = row;
+    this-> coll = coll;
+    pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
 };
 #endif
