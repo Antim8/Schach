@@ -32,7 +32,7 @@ Springer::Springer(int row, int coll, bool color, SVG *view) {
     
 };
 
-void Springer::setPos(int row, int coll) {
+void Springer::setPos(int coll, int row) {
     this-> row = row;
     this-> coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);

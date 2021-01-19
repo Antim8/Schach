@@ -21,6 +21,7 @@ class Schachbrett {
         void colorTile(int row, int coll);
         void resetColor(int row, int coll);
         string getTileFig( int row, int coll);
+        string setTileFig(int row, int coll, string tileFig);
     
 };
             
@@ -110,14 +111,22 @@ void Schachbrett::resetColor(int row, int coll) {
     if(row > 0 && coll > 0)
         tiles[row][coll]->setColor("transparent");
         
-}
+};
 
 
 string Schachbrett::getTileFig(int row, int coll) {
-
-    return (order[row - 1][coll - 1][0] + order[row - 1][coll - 1][1]); 
+    if (row > 0 && coll > 0)
+        return (order[row - 1][coll - 1][0] + order[row - 1][coll - 1][1]); 
+    else 
+        return "";
     
 };
+
+string Schachbrett::setTileFig(int row, int coll, string tileFig) {
+ //TODO
+    order
+    
+}
 
       
 #endif
