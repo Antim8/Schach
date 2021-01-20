@@ -11,7 +11,7 @@ class Schachbrett {
     
         SVG *feld;
         Rect* tiles[13][10];
-        string order[8][8][2] = {""};
+        string order[8][8] = {""};
     
     public: 
         
@@ -28,7 +28,7 @@ class Schachbrett {
         
 Schachbrett::Schachbrett() {
         
-    feld = new SVG(800, 800, "Schachbrett");
+    feld = new SVG(800, 610, "Schachbrett");
     for (int i = 0; i < 13; i++) {
         for (int j = 0; j < 10; j++) {
             
@@ -72,7 +72,7 @@ Schachbrett::Schachbrett() {
     
 };
 
-void Schachbrett::startingOrder() {
+/*void Schachbrett::startingOrder() {
     
     string storder[] = {"t0", "s0", "l0", "d ", "k ", "l1", "s1", "t1"}; 
     
@@ -95,7 +95,31 @@ void Schachbrett::startingOrder() {
         }
     }
     
+};*/
+
+void Schachbrett::startingOrder() {
+    
+    string storder[] = {"t0", "s0", "l0", "d ", "k ", "l1", "s1", "t1"}; 
+    
+    for ( int i = 0; i < 2; i++) {
+        for (int j = 0; j < 8; j++) {
+            
+            order[7 * i][j] = storder[j];
+            
+            if (i) {
+                order[7 * i][j] = storder[j] + "b";
+            } else {
+                order[7 * i][j] = storder[j] + "w";
+            }
+            
+            //TODO: Bauern hinzu
+            order[6][j] = "b" + to_string(j) + "b";
+            order[1][j] = "b" + to_string(j) + "w";
+        }
+    }
+    
 };
+
 
 SVG *Schachbrett::getFeld() {
     return feld;
@@ -116,17 +140,22 @@ void Schachbrett::resetColor(int row, int coll) {
 
 string Schachbrett::getTileFig(int row, int coll) {
     if (row > 0 && coll > 0)
-        return (order[row - 1][coll - 1][0] + order[row - 1][coll - 1][1]); 
+        return order[row - 1][coll - 1];//(order[row - 1][coll - 1][0] + order[row - 1][coll - 1][1]); 
     else 
         return "";
     
 };
 
-string Schachbrett::setTileFig(int row, int coll, string tileFig) {
+string Schachbrett::setTileFig(int coll, int row, string tileFig) {
  //TODO
-    order
+    string figOnTile = getTileFig(row, coll);
+    order[row - 1][coll - 1] = tileFig;
+    if (figOnTile[0] != 'k') 
+        return figOnTile;
+    else
+        return "gameOver";
     
-}
+};
 
       
 #endif
