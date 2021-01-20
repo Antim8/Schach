@@ -9,6 +9,7 @@ class Bauer : Figur {
     public:
         
         Bauer();
+        //~Bauer();
         Bauer(int row, int coll, bool color, SVG *view);
         
         void setPos(int row, int coll);
@@ -21,6 +22,11 @@ Bauer::Bauer() {
     coll = 0;
     desc = "b";
 };
+
+/*Bauer::~Bauer() {
+    pic = NULL;
+    std::cout << "Bauer destr" << endl;
+}*/
 
 Bauer::Bauer(int row, int coll, bool color, SVG *view) {
     this->row = row;
@@ -36,7 +42,6 @@ Bauer::Bauer(int row, int coll, bool color, SVG *view) {
     
 };
 //TODO: Order update in Schachbrett
-//TODO: coll und row bei allen tauschen
 void Bauer::setPos(int coll, int row) {
     this-> row = row;
     this-> coll = coll;
