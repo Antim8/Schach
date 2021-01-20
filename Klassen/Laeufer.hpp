@@ -32,7 +32,7 @@ Laeufer::Laeufer(int row, int coll, bool color, SVG *view) {
     
 };
 
-void Laeufer::setPos(int row, int coll) {
+void Laeufer::setPos(int coll, int row) {
     this-> row = row;
     this-> coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);

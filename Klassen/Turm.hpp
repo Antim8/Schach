@@ -40,7 +40,7 @@ void Turm::showMovement(Schachbrett *brett) {
     
 }
 
-void Turm::setPos(int row, int coll) {
+void Turm::setPos(int coll, int row) {
     this-> row = row;
     this-> coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);

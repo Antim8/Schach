@@ -3,6 +3,7 @@
 
 #include <algoviz/SVG.hpp> 
 #include <string>
+#include <iostream>
 #include "Schachbrett.hpp"
 
 class Figur {
@@ -19,6 +20,7 @@ class Figur {
     public:
         
         Figur();
+        ~Figur();
         Figur(int row, int coll, bool color);
     
         int getRow();
@@ -38,6 +40,12 @@ Figur::Figur() {
     desc = "";
     color = true;
 };
+
+Figur::~Figur() {
+ 
+    delete pic;
+    std::cout << "destr" << endl;
+}
 
 Figur::Figur(int row, int coll, bool color) {
     this->row = row;
