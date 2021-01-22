@@ -35,10 +35,10 @@ Turm::Turm(int row, int coll, bool color, SVG *view) {
 };
 
 void Turm::showMovement(Schachbrett *brett) {
- 
+     
     ;
     
-}
+};
 
 void Turm::setPos(int coll, int row) {
     this-> row = row;
