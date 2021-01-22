@@ -31,7 +31,7 @@ class Figur {
     
         void setPos(int row, int coll);
         void showMovement();
-        void colorIfAvailable(int row, int coll, int drow, int dcoll, Schachbrett *brett);
+        void colorIfAvailable(int row, int coll, int drow, int dcoll, int steps, Schachbrett *brett);
                
 };
 
@@ -93,8 +93,8 @@ void Figur::setPos(int row, int coll) {
         return colorIfAvailable(row + (drow - 2 * !color) * abs(drow), coll + dcoll, drow, dcoll, brett);
 }*/
 
-void Figur::colorIfAvailable(int row, int coll, int drow, int dcoll, Schachbrett *brett){
-    if(row > 8 || row < 1 || coll > 8 || coll < 1 || (brett->getTileFig(row,coll)[2] == 'w' && color) ||
+void Figur::colorIfAvailable(int row, int coll, int drow, int dcoll, int steps, Schachbrett *brett){
+    if(row > 8 || row < 1 || coll > 8 || coll < 1 || steps <= 0 || (brett->getTileFig(row,coll)[2] == 'w' && color) ||
        (brett->getTileFig(row,coll)[2] == 'b' && !color)) {
         return;
     }else if((brett->getTileFig(row, coll)[2] == 'w' && !color) || (brett->getTileFig(row, coll)[2] == 'b' && color)){
@@ -104,7 +104,7 @@ void Figur::colorIfAvailable(int row, int coll, int drow, int dcoll, Schachbrett
     } else {
         brett->setPossibleMovement(row, coll);
         brett->colorTile(row, coll, "green");
-        return colorIfAvailable(row + (drow - 2 * !color) * abs(drow), coll + dcoll, drow, dcoll, brett);
+        return colorIfAvailable(row + drow, coll + dcoll, drow, dcoll, steps - 1, brett);
     }
 }
 

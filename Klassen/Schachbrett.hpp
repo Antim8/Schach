@@ -132,9 +132,19 @@ void Schachbrett::colorTile(int row, int coll, string color) {
         
 };
 
-void Schachbrett::resetColor(int row, int coll) {
+/*void Schachbrett::resetColor(int row, int coll) {
     if(row > 0 && coll > 0)
         tiles[row][coll]->setColor("transparent");
+        
+};*/
+
+void Schachbrett::resetColor() {
+    
+        for (int i = 1; i <= 8; i++) {
+            for (int j = 1; j <= 8; j++) {
+                tiles[i][j]->setColor("transparent");
+            }
+        }
         
 };
 
