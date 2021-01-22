@@ -11,7 +11,7 @@ class Schachbrett {
         SVG *feld;
         Rect* tiles[13][10];
         string order[8][8] = {""};
-    
+        char possibleMovement[8][8] = {' '};
     public: 
         
         Schachbrett();
@@ -21,6 +21,9 @@ class Schachbrett {
         void resetColor(int row, int coll);
         string getTileFig( int row, int coll);
         string setTileFig(int row, int coll, string tileFig);
+        char getPossibleMovement(int row, int coll);
+        void setPossibleMovement(int row, int coll);
+        void resetPossibleMovement();
 };
             
         
@@ -154,6 +157,31 @@ string Schachbrett::setTileFig(int coll, int row, string tileFig) {
         return "gameOver";
     
 };
+
+char Schachbrett::getPossibleMovement(int row, int coll) {
+    
+    if (row > 0 && coll > 0)
+        return possibleMovement[row - 1][coll - 1]; 
+    else 
+        return ' ';  
+    
+};
+
+void Schachbrett::setPossibleMovement(int row, int coll) {
+    
+    if (row > 0 && coll > 0) {
+        possibleMovement[row - 1][coll - 1] = 'p';
+    }
+    
+};
+
+void Schachbrett::resetPossibleMovement() {
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            possibleMovement[i][j] = ' ';
+        }
+    }
+}
 
       
 #endif

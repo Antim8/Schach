@@ -31,7 +31,7 @@ class Figur {
     
         void setPos(int row, int coll);
         void showMovement();
-        vector<int> colorIfAvailable(int row, int coll, int drow, int dcoll,Schachbrett *brett);
+        void colorIfAvailable(int row, int coll, int drow, int dcoll, Schachbrett *brett);
                
 };
 
@@ -77,7 +77,7 @@ void Figur::setPos(int row, int coll) {
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
 };
 
-vector<int> Figur::colorIfAvailable(int row, int coll, int drow, int dcoll, Schachbrett *brett){
+/*vector<int> Figur::colorIfAvailable(int row, int coll, int drow, int dcoll, Schachbrett *brett){
      vector<int> tile;
     if(row > 8 || row < 1 || coll > 8 || coll < 1 || (brett->getTileFig(row,coll)[2] == 'w' && color) || (brett->getTileFig(row,coll)[2] == 'b' && !color)) {
         tile.push_back(row - (drow + 2 * !color) * abs(drow));
@@ -91,6 +91,21 @@ vector<int> Figur::colorIfAvailable(int row, int coll, int drow, int dcoll, Scha
     }else 
         brett->colorTile(row, coll, "green");
         return colorIfAvailable(row + (drow - 2 * !color) * abs(drow), coll + dcoll, drow, dcoll, brett);
+}*/
+
+void Figur::colorIfAvailable(int row, int coll, int drow, int dcoll, Schachbrett *brett){
+    if(row > 8 || row < 1 || coll > 8 || coll < 1 || (brett->getTileFig(row,coll)[2] == 'w' && color) ||
+       (brett->getTileFig(row,coll)[2] == 'b' && !color)) {
+        return;
+    }else if((brett->getTileFig(row, coll)[2] == 'w' && !color) || (brett->getTileFig(row, coll)[2] == 'b' && color)){
+        brett->setPossibleMovement(row, coll);
+        brett->colorTile(row, coll, "green");
+        return;
+    } else {
+        brett->setPossibleMovement(row, coll);
+        brett->colorTile(row, coll, "green");
+        return colorIfAvailable(row + (drow - 2 * !color) * abs(drow), coll + dcoll, drow, dcoll, brett);
+    }
 }
 
 #endif
