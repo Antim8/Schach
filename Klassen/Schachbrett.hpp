@@ -4,7 +4,6 @@
 #include <algoviz/SVG.hpp>
 
 
-
 class Schachbrett {
     
     private:
@@ -22,7 +21,6 @@ class Schachbrett {
         void resetColor(int row, int coll);
         string getTileFig( int row, int coll);
         string setTileFig(int row, int coll, string tileFig);
-    
 };
             
         
