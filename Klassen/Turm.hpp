@@ -35,9 +35,14 @@ Turm::Turm(int row, int coll, bool color, SVG *view) {
 };
 
 void Turm::showMovement(Schachbrett *brett) {
-     
-    ;
-    
+    //nach oben
+    colorIfAvailable(row + 1, coll, 1, 0, 7, brett);
+    //nach unten
+    colorIfAvailable(row - 1, coll, -1, 0, 7, brett);
+    //nach links
+    colorIfAvailable(row, coll + 1, 0, 1, 7, brett);
+    //nach rechts
+    colorIfAvailable(row, coll - 1, 0, -1, 7, brett);
 };
 
 void Turm::setPos(int coll, int row) {

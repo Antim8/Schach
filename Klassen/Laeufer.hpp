@@ -10,6 +10,7 @@ class Laeufer : Figur {
         Laeufer();
         Laeufer(int row, int coll, bool color, SVG *view);
         void setPos(int row, int coll);
+        void showMovement(Schachbrett *brett);
 };
 
 Laeufer::Laeufer() {
@@ -36,5 +37,16 @@ void Laeufer::setPos(int coll, int row) {
     this-> row = row;
     this-> coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
+};
+
+void Laeufer::showMovement(Schachbrett *brett) {
+    //nach oben rechts
+    colorIfAvailable(row + 1, coll + 1, 1, 1, 7, brett);
+    //nach oben links
+    colorIfAvailable(row + 1, coll - 1, 1, - 1, 7, brett);
+    //nach unten links
+    colorIfAvailable(row - 1, coll - 1, - 1, - 1, 7, brett);
+    //nach unten rechts
+    colorIfAvailable(row - 1, coll + 1, - 1, 1, 7, brett);
 };
 #endif
