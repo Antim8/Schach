@@ -13,7 +13,7 @@ class Bauer : Figur {
         Bauer(int row, int coll, bool color, SVG *view);
         
         void setPos(int row, int coll);
-        void showMovement();
+        void showMovement(Schachbrett *brett);
         
     
 };
@@ -43,5 +43,50 @@ void Bauer::setPos(int coll, int row) {
     this-> coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
 }
+
+void Bauer::showMovement(Schachbrett *brett) {
+    
+     if (color) {
+        
+        if (row == 2) {
+            
+            colorIfAvailable(row + 1, coll, 1, 0, 2, brett);
+              
+        } else {
+         
+            colorIfAvailable(row + 1, coll, 0, 0, 1, brett);
+            
+        }
+         
+        if (brett->getTileFig(row + 1, coll + 1)[2] == 'b')
+            colorIfAvailable(row + 1, coll + 1, 0, 0, 1, brett);
+         
+        if (brett->getTileFig(row + 1, coll - 1)[2] == 'b')
+            colorIfAvailable(row + 1, coll - 1, 0, 0, 1, brett);
+            
+         
+    } else {
+         
+        if (row == 7) {
+            
+            colorIfAvailable(row - 1, coll, -1, 0, 2, brett);
+              
+        } else {
+         
+            colorIfAvailable(row - 1, coll, 0, 0, 1, brett);
+            
+        }
+        
+        if (brett->getTileFig(row - 1, coll - 1)[2] == 'w')
+            colorIfAvailable(row - 1, coll - 1, 0, 0, 1, brett);
+         
+        if (brett->getTileFig(row - 1, coll + 1)[2] == 'w')
+            colorIfAvailable(row - 1, coll + 1, 0, 0, 1, brett);
+         
+         
+    }
+    
+}
+    
 
 #endif
