@@ -10,6 +10,7 @@ class Springer : Figur {
         Springer();
         Springer(int row, int coll, bool color, SVG *view);
         void setPos(int row, int coll);
+        void showMovement(Schachbrett *brett);
 };
 
 Springer::Springer() {
@@ -36,5 +37,16 @@ void Springer::setPos(int coll, int row) {
     this-> row = row;
     this-> coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
+};
+
+void Laeufer::showMovement(Schachbrett *brett) {
+    //nach oben rechts
+    colorIfAvailable(row + 2, coll + 1, 0, 0, 1, brett);
+    //nach oben links
+    colorIfAvailable(row + 2, coll - 1, 0, 0, 1, brett);
+    //nach unten links
+    colorIfAvailable(row - 2, coll - 1, 0, 0, 1, brett);
+    //nach unten rechts
+    colorIfAvailable(row - 2, coll + 1, 0, 0, 1, brett);
 };
 #endif
