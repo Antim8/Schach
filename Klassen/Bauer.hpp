@@ -10,9 +10,9 @@ class Bauer : Figur {
         
         Bauer();
         
-        Bauer(int row, int coll, bool color, SVG *view);
+        Bauer(int coll, int row, bool color, SVG *view);
         
-        void setPos(int row, int coll);
+        void setPos(int coll, int row);
         void showMovement(Schachbrett *brett);
         
     
@@ -24,7 +24,7 @@ Bauer::Bauer() {
     desc = "b";
 };
 
-Bauer::Bauer(int row, int coll, bool color, SVG *view) {
+Bauer::Bauer(int coll, int row, bool color, SVG *view) {
     this->row = row;
     this->coll = coll;
     desc = "b";
@@ -50,38 +50,40 @@ void Bauer::showMovement(Schachbrett *brett) {
         
         if (row == 2) {
             
-            colorIfAvailable(row + 1, coll, 1, 0, 2, brett);
+            colorIfAvailable(coll, row + 1, 0, 1, 2, brett, color);
               
         } else {
          
-            colorIfAvailable(row + 1, coll, 0, 0, 1, brett);
+            colorIfAvailable(coll, row + 1, 0, 1, 1, brett, color);
             
         }
          
-        if (brett->getTileFig(row + 1, coll + 1)[2] == 'b')
-            colorIfAvailable(row + 1, coll + 1, 0, 0, 1, brett);
-         
-        if (brett->getTileFig(row + 1, coll - 1)[2] == 'b')
-            colorIfAvailable(row + 1, coll - 1, 0, 0, 1, brett);
+        if (brett->getTileFig(coll + 1, row + 1)[2] == 'b')
+            colorIfAvailable(coll + 1, row + 1, 0, 0, 1, brett, color);
+        if (coll > 1) { 
+            if (brett->getTileFig(coll - 1, row + 1)[2] == 'b')
+                colorIfAvailable(coll - 1, row + 1, 0, 0, 1, brett, color);
+        }
             
          
     } else {
          
         if (row == 7) {
             
-            colorIfAvailable(row - 1, coll, -1, 0, 2, brett);
+            colorIfAvailable(coll, row - 1, 0, -1, 2, brett, color);
               
         } else {
          
-            colorIfAvailable(row - 1, coll, 0, 0, 1, brett);
+            colorIfAvailable(coll, row - 1, 0, 0, 1, brett, color);
             
         }
-        
-        if (brett->getTileFig(row - 1, coll - 1)[2] == 'w')
-            colorIfAvailable(row - 1, coll - 1, 0, 0, 1, brett);
+        if (coll > 1) {
+            if (brett->getTileFig(coll - 1, row - 1)[2] == 'w')
+                colorIfAvailable(coll - 1, row - 1, 0, 0, 1, brett, color);
+        }
          
-        if (brett->getTileFig(row - 1, coll + 1)[2] == 'w')
-            colorIfAvailable(row - 1, coll + 1, 0, 0, 1, brett);
+        if (brett->getTileFig(coll + 1, row - 1)[2] == 'w')
+            colorIfAvailable(coll + 1, row - 1, 0, 0, 1, brett, color);
          
          
     }

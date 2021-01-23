@@ -17,13 +17,14 @@ class Schachbrett {
         Schachbrett();
         void startingOrder();
         SVG *getFeld();
-        void colorTile(int row, int coll, string color);
-        void resetColor(int row, int coll);
-        string getTileFig( int row, int coll);
-        string setTileFig(int row, int coll, string tileFig);
-        char getPossibleMovement(int row, int coll);
-        void setPossibleMovement(int row, int coll);
+        void colorTile(int coll, int row, string color);
+        void resetColor();
+        string getTileFig( int coll, int row);
+        string setTileFig(int coll, int row, string tileFig);
+        char getPossibleMovement(int coll, int row);
+        void setPossibleMovement(int coll, int row);
         void resetPossibleMovement();
+        void printStuff();
 };
             
         
@@ -105,17 +106,17 @@ void Schachbrett::startingOrder() {
     for ( int i = 0; i < 2; i++) {
         for (int j = 0; j < 8; j++) {
             
-            order[7 * i][j] = storder[j];
+            //order[j][7 * i] = storder[j];
             
             if (i) {
-                order[7 * i][j] = storder[j] + "b";
+                order[j][7 * i] = storder[j] + "b";
             } else {
-                order[7 * i][j] = storder[j] + "w";
+                order[j][7 * i] = storder[j] + "w";
             }
             
             //TODO: Bauern hinzu
-            order[6][j] = "b" + to_string(j) + "b";
-            order[1][j] = "b" + to_string(j) + "w";
+            order[j][6] = "b" + to_string(j) + "b";
+            order[j][1] = "b" + to_string(j) + "w";
         }
     }
     
@@ -126,9 +127,9 @@ SVG *Schachbrett::getFeld() {
     return feld;
 };
 
-void Schachbrett::colorTile(int row, int coll, string color) {
+void Schachbrett::colorTile(int coll, int row, string color) {
     if(row > 0 && coll > 0)
-        tiles[row][coll]->setColor(color);
+        tiles[coll][row]->setColor(color);
         
 };
 
@@ -149,9 +150,9 @@ void Schachbrett::resetColor() {
 };
 
 
-string Schachbrett::getTileFig(int row, int coll) {
+string Schachbrett::getTileFig(int coll, int row) {
     if (row > 0 && coll > 0)
-        return order[row - 1][coll - 1];//(order[row - 1][coll - 1][0] + order[row - 1][coll - 1][1]); 
+        return order[coll - 1][row - 1];//(order[row - 1][coll - 1][0] + order[row - 1][coll - 1][1]); 
     else 
         return "";
     
@@ -159,8 +160,8 @@ string Schachbrett::getTileFig(int row, int coll) {
 
 string Schachbrett::setTileFig(int coll, int row, string tileFig) {
  //TODO
-    string figOnTile = getTileFig(row, coll);
-    order[row - 1][coll - 1] = tileFig;
+    string figOnTile = getTileFig(coll, row);
+    order[coll - 1][row - 1] = tileFig;
     if (figOnTile[0] != 'k') 
         return figOnTile;
     else
@@ -168,19 +169,19 @@ string Schachbrett::setTileFig(int coll, int row, string tileFig) {
     
 };
 
-char Schachbrett::getPossibleMovement(int row, int coll) {
+char Schachbrett::getPossibleMovement(int coll, int row) {
     
     if (row > 0 && coll > 0)
-        return possibleMovement[row - 1][coll - 1]; 
+        return possibleMovement[coll - 1][row - 1]; 
     else 
         return ' ';  
     
 };
 
-void Schachbrett::setPossibleMovement(int row, int coll) {
+void Schachbrett::setPossibleMovement(int coll, int row) {
     
     if (row > 0 && coll > 0) {
-        possibleMovement[row - 1][coll - 1] = 'p';
+        possibleMovement[coll - 1][row - 1] = 'p';
     }
     
 };
@@ -193,5 +194,29 @@ void Schachbrett::resetPossibleMovement() {
     }
 }
 
-      
+
+void Schachbrett::printStuff() {
+    cout << "ORDER" << endl;
+    for( int i = 0; i < 8; i++) {
+        for( int j = 0; j < 8; j++) {
+            if(order[j][7-i] != "")
+                cout << order[j][7 - i] << " ";
+            else
+                cout << " 0 ";
+        }
+        cout << endl;
+    }
+    cout << "POSSIBLE MOVEMENT" << endl;
+    for( int i = 0; i < 8; i++) {
+        for( int j = 0; j < 8; j++) {
+            if(possibleMovement[j][7-i] != ' ')
+                cout << possibleMovement[j][7 - i] << " ";
+            else
+                cout << 0;
+        }
+        cout << endl;
+    }
+}
+
+
 #endif

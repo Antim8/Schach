@@ -8,8 +8,8 @@ class Laeufer : Figur {
     public:
     
         Laeufer();
-        Laeufer(int row, int coll, bool color, SVG *view);
-        void setPos(int row, int coll);
+        Laeufer(int coll, int row, bool color, SVG *view);
+        void setPos(int coll, int row);
         void showMovement(Schachbrett *brett);
 };
 
@@ -19,7 +19,7 @@ Laeufer::Laeufer() {
     this->desc = "l";
 };
 
-Laeufer::Laeufer(int row, int coll, bool color, SVG *view) {
+Laeufer::Laeufer(int coll, int row, bool color, SVG *view) {
     this->row = row;
     this->coll = coll;
     desc = "l";
@@ -41,12 +41,12 @@ void Laeufer::setPos(int coll, int row) {
 
 void Laeufer::showMovement(Schachbrett *brett) {
     //nach oben rechts
-    colorIfAvailable(row + 1, coll + 1, 1, 1, 7, brett);
+    colorIfAvailable(coll + 1, row + 1, 1, 1, 7, brett, color);
     //nach oben links
-    colorIfAvailable(row + 1, coll - 1, 1, - 1, 7, brett);
+    colorIfAvailable(coll - 1, row + 1, -1, 1, 7, brett, color);
     //nach unten links
-    colorIfAvailable(row - 1, coll - 1, - 1, - 1, 7, brett);
+    colorIfAvailable(coll - 1, row - 1, -1, -1, 7, brett, color);
     //nach unten rechts
-    colorIfAvailable(row - 1, coll + 1, - 1, 1, 7, brett);
+    colorIfAvailable(coll + 1, row - 1, 1, -1, 7, brett, color);
 };
 #endif

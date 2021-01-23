@@ -8,8 +8,8 @@ class Dame : Figur {
     public:
     
         Dame();
-        Dame(int row, int coll, bool color, SVG *view);
-        void setPos(int row, int coll);
+        Dame(int coll, int row, bool color, SVG *view);
+        void setPos(int coll, int row);
         void showMovement(Schachbrett *brett);
 };
 
@@ -19,7 +19,7 @@ Dame::Dame() {
     this->desc = "d";
 };
 
-Dame::Dame(int row, int coll, bool color, SVG *view) {
+Dame::Dame(int coll, int row, bool color, SVG *view) {
     this->row = row;
     this->coll = coll;
     desc = "d";
@@ -41,20 +41,22 @@ void Dame::setPos(int coll, int row) {
 
 void Dame::showMovement(Schachbrett *brett) {
     // nach oben
-    colorIfAvailable(row + 1, coll, 1, 0, 7, brett);
+    colorIfAvailable(coll, row + 1, 0, 1, 7, brett, color);
     // nach unten
-    colorIfAvailable(row - 1, coll, -1, 0, 7, brett);
+    colorIfAvailable(coll, row - 1, 0, -1, 7, brett, color);
     // nach rechts
-    colorIfAvailable(row, coll + 1, 0, 1, 7, brett);
+    colorIfAvailable(coll + 1, row, 1, 0, 7, brett, color);
     // nach links
-    colorIfAvailable(row, coll - 1, 0, -1, 7, brett);
+    colorIfAvailable(coll - 1, row, -1, 0, 7, brett, color);
     // nach oben rechts
-    colorIfAvailable(row + 1, coll + 1, 1, 1, 7, brett); 
+    cout << "Dame Daten " << coll << " " << row << " " << color << endl; 
+    colorIfAvailable(coll + 1, row + 1, 1, 1, 7, brett, color); 
     // nach unten rechts
-    colorIfAvailable(row - 1, coll + 1, -1, 1, 7, brett); 
+    colorIfAvailable(coll + 1, row - 1, 1, -1, 7, brett, color); 
     // nach unten links
-    colorIfAvailable(row - 1, coll - 1, -1, -1, 7, brett); 
+    colorIfAvailable(coll - 1, row - 1, -1, -1, 7, brett, color); 
     // nach oben links
-    colorIfAvailable(row + 1, coll - 1, 1, -1, 7, brett); 
+    colorIfAvailable(coll - 1, row + 1, -1, 1, 7, brett, color); 
+    return;
 }
 #endif
