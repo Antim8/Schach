@@ -41,12 +41,12 @@ void Laeufer::setPos(int coll, int row) {
 
 void Laeufer::showMovement(Schachbrett *brett) {
     //nach oben rechts
-    colorIfAvailable(coll + 1, row + 1, 1, 1, 7, brett);
+    colorIfAvailable(coll + 1, row + 1, 1, 1, 7, brett, color);
     //nach oben links
-    colorIfAvailable(coll - 1, row + 1, -1, 1, 7, brett);
+    colorIfAvailable(coll - 1, row + 1, -1, 1, 7, brett, color);
     //nach unten links
-    colorIfAvailable(coll - 1, row - 1, -1, -1, 7, brett);
+    colorIfAvailable(coll - 1, row - 1, -1, -1, 7, brett, color);
     //nach unten rechts
-    colorIfAvailable(coll + 1, row - 1, 1, -1, 7, brett);
+    colorIfAvailable(coll + 1, row - 1, 1, -1, 7, brett, color);
 };
 #endif

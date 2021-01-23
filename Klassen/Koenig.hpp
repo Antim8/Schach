@@ -42,21 +42,21 @@ void Koenig::setPos(int coll, int row) {
 void Koenig::showMovement(Schachbrett *brett) {
         
     // nach oben
-    colorIfAvailable(coll, row + 1, 0, 1, 1, brett);
+    colorIfAvailable(coll, row + 1, 0, 1, 1, brett, color);
     // nach unten
-    colorIfAvailable(coll, row - 1, 0, -1, 1, brett);
+    colorIfAvailable(coll, row - 1, 0, -1, 1, brett, color);
     // nach rechts
-    colorIfAvailable(coll + 1, row, 1, 0, 1, brett);
+    colorIfAvailable(coll + 1, row, 1, 0, 1, brett, color);
     // nach links
-    colorIfAvailable(coll - 1, row, -1, 0, 1, brett);
+    colorIfAvailable(coll - 1, row, -1, 0, 1, brett, color);
     // nach oben rechts
-    colorIfAvailable(coll + 1, row + 1, 1, 1, 1, brett); 
+    colorIfAvailable(coll + 1, row + 1, 1, 1, 1, brett, color); 
     // nach unten rechts
-    colorIfAvailable(coll + 1, row - 1, 1, -1, 1, brett); 
+    colorIfAvailable(coll + 1, row - 1, 1, -1, 1, brett, color); 
     // nach unten links
-    colorIfAvailable(coll - 1, row - 1, -1, -1, 1, brett); 
+    colorIfAvailable(coll - 1, row - 1, -1, -1, 1, brett, color); 
     // nach oben links
-    colorIfAvailable(coll - 1, row + 1, -1, 1, 1, brett); 
+    colorIfAvailable(coll - 1, row + 1, -1, 1, 1, brett, color); 
     
 }
 

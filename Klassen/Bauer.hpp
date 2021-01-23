@@ -50,19 +50,19 @@ void Bauer::showMovement(Schachbrett *brett) {
         
         if (row == 2) {
             
-            colorIfAvailable(coll, row + 1, 0, 1, 2, brett);
+            colorIfAvailable(coll, row + 1, 0, 1, 2, brett, color);
               
         } else {
          
-            colorIfAvailable(coll, row + 1, 0, 1, 1, brett);
+            colorIfAvailable(coll, row + 1, 0, 1, 1, brett, color);
             
         }
          
         if (brett->getTileFig(coll + 1, row + 1)[2] == 'b')
-            colorIfAvailable(coll + 1, row + 1, 0, 0, 1, brett);
+            colorIfAvailable(coll + 1, row + 1, 0, 0, 1, brett, color);
         if (coll > 1) { 
             if (brett->getTileFig(coll - 1, row + 1)[2] == 'b')
-                colorIfAvailable(coll - 1, row + 1, 0, 0, 1, brett);
+                colorIfAvailable(coll - 1, row + 1, 0, 0, 1, brett, color);
         }
             
          
@@ -70,20 +70,20 @@ void Bauer::showMovement(Schachbrett *brett) {
          
         if (row == 7) {
             
-            colorIfAvailable(coll, row - 1, 0, -1, 2, brett);
+            colorIfAvailable(coll, row - 1, 0, -1, 2, brett, color);
               
         } else {
          
-            colorIfAvailable(coll, row - 1, 0, 0, 1, brett);
+            colorIfAvailable(coll, row - 1, 0, 0, 1, brett, color);
             
         }
         if (coll > 1) {
             if (brett->getTileFig(coll - 1, row - 1)[2] == 'w')
-                colorIfAvailable(coll - 1, row - 1, 0, 0, 1, brett);
+                colorIfAvailable(coll - 1, row - 1, 0, 0, 1, brett, color);
         }
          
         if (brett->getTileFig(coll + 1, row - 1)[2] == 'w')
-            colorIfAvailable(coll + 1, row - 1, 0, 0, 1, brett);
+            colorIfAvailable(coll + 1, row - 1, 0, 0, 1, brett, color);
          
          
     }

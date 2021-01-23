@@ -41,16 +41,16 @@ void Springer::setPos(int coll, int row) {
 
 void Springer::showMovement(Schachbrett *brett) {
     //nach oben rechts
-    colorIfAvailable(coll + 1, row + 2, 0, 0, 1, brett);
-    colorIfAvailable(coll + 2, row + 1, 0, 0, 1, brett);
+    colorIfAvailable(coll + 1, row + 2, 0, 0, 1, brett, color);
+    colorIfAvailable(coll + 2, row + 1, 0, 0, 1, brett, color);
     //nach oben links
-    colorIfAvailable(coll - 1, row + 2, 0, 0, 1, brett);
-    colorIfAvailable(coll - 2, row + 1, 0, 0, 1, brett);
+    colorIfAvailable(coll - 1, row + 2, 0, 0, 1, brett, color);
+    colorIfAvailable(coll - 2, row + 1, 0, 0, 1, brett, color);
     //nach unten links
-    colorIfAvailable(coll - 1, row - 2, 0, 0, 1, brett);
-    colorIfAvailable(coll - 2, row - 1, 0, 0, 1, brett);
+    colorIfAvailable(coll - 1, row - 2, 0, 0, 1, brett, color);
+    colorIfAvailable(coll - 2, row - 1, 0, 0, 1, brett, color);
     //nach unten rechts
-    colorIfAvailable(coll + 1, row - 2, 0, 0, 1, brett);
-    colorIfAvailable(coll + 2, row - 1, 0, 0, 1, brett);
+    colorIfAvailable(coll + 1, row - 2, 0, 0, 1, brett, color);
+    colorIfAvailable(coll + 2, row - 1, 0, 0, 1, brett, color);
 };
 #endif

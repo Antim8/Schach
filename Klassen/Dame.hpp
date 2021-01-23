@@ -41,20 +41,22 @@ void Dame::setPos(int coll, int row) {
 
 void Dame::showMovement(Schachbrett *brett) {
     // nach oben
-    colorIfAvailable(coll, row + 1, 0, 1, 7, brett);
+    colorIfAvailable(coll, row + 1, 0, 1, 7, brett, color);
     // nach unten
-    colorIfAvailable(coll, row - 1, 0, -1, 7, brett);
+    colorIfAvailable(coll, row - 1, 0, -1, 7, brett, color);
     // nach rechts
-    colorIfAvailable(coll + 1, row, 1, 0, 7, brett);
+    colorIfAvailable(coll + 1, row, 1, 0, 7, brett, color);
     // nach links
-    colorIfAvailable(coll - 1, row, -1, 0, 7, brett);
+    colorIfAvailable(coll - 1, row, -1, 0, 7, brett, color);
     // nach oben rechts
-    colorIfAvailable(coll + 1, row + 1, 1, 1, 7, brett); 
+    cout << "Dame Daten " << coll << " " << row << " " << color << endl; 
+    colorIfAvailable(coll + 1, row + 1, 1, 1, 7, brett, color); 
     // nach unten rechts
-    colorIfAvailable(coll + 1, row - 1, 1, -1, 7, brett); 
+    colorIfAvailable(coll + 1, row - 1, 1, -1, 7, brett, color); 
     // nach unten links
-    colorIfAvailable(coll - 1, row - 1, -1, -1, 7, brett); 
+    colorIfAvailable(coll - 1, row - 1, -1, -1, 7, brett, color); 
     // nach oben links
-    colorIfAvailable(coll - 1, row + 1, -1, 1, 7, brett); 
+    colorIfAvailable(coll - 1, row + 1, -1, 1, 7, brett, color); 
+    return;
 }
 #endif
