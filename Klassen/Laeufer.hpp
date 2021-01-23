@@ -10,6 +10,7 @@ class Laeufer : Figur {
         Laeufer();
         Laeufer(int coll, int row, bool color, SVG *view);
         void setPos(int coll, int row);
+        void showMovement(Schachbrett *brett);
 };
 
 Laeufer::Laeufer() {
@@ -37,4 +38,69 @@ void Laeufer::setPos(int coll, int row) {
     this-> coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
 };
+
+void Laeufer::showMovement(Schachbrett *brett) {
+    
+    bool endOR = false;
+    bool endUR = false;
+    bool endUL = false;
+    bool endOL = false;
+    for(int i = 1; i <8; i++) {
+
+        if ((brett->getTileFig(coll + i - 1, row + i - 1)[2] == 'b' && color) ||
+            (brett->getTileFig(coll + i - 1, row + i - 1)[2] == 'w' && !color) ||
+            (brett->getTileFig(coll + i, row + i)[2] == 'b' && !color) ||
+            (brett->getTileFig(coll + i, row + i)[2] == 'w' && color) || (row + i) > 8 || (coll + i) > 8)
+                endOR = true;
+        
+        if ((brett->getTileFig(coll + i - 1, row - i + 1)[2] == 'b' && color) ||
+            (brett->getTileFig(coll + i - 1, row - i + 1)[2] == 'w' && !color) ||
+            (brett->getTileFig(coll + i, row - i)[2] == 'b' && !color) ||
+            (brett->getTileFig(coll + i, row - i)[2] == 'w' && color) || (row - i) < 1 || (coll + i) > 8)
+                endUR = true;
+        
+        if ((brett->getTileFig(coll - i + 1, row - i + 1)[2] == 'b' && color) ||
+            (brett->getTileFig(coll - i + 1, row - i + 1)[2] == 'w' && !color) ||
+            (brett->getTileFig(coll - i, row - i)[2] == 'b' && !color) ||
+            (brett->getTileFig(coll - i, row - i)[2] == 'w' && color) || (row - i) < 1 || (coll - i) < 1)
+                endUL = true;
+        
+        if ((brett->getTileFig(coll - i + 1, row + i - 1)[2] == 'b' && color) ||
+            (brett->getTileFig(coll - i + 1, row + i - 1)[2] == 'w' && !color) ||
+            (brett->getTileFig(coll - i, row + i)[2] == 'b' && !color) ||
+            (brett->getTileFig(coll - i, row + i)[2] == 'w' && color) || (row + i) > 8 || (coll - i) < 1)
+                endOL = true;
+       
+
+            // obenrechts
+
+            if (!endOR) {    
+                brett->setPM(coll + i, row + i);
+                brett->colorTile(coll + i, row + i, "green");
+
+            }
+            // untenrechts
+
+            if(!endUR) {    
+                brett->setPM(coll + i, row - i);
+                brett->colorTile(coll + i, row - i, "green");
+
+            }
+            // untenlinks
+
+            if(!endUL) {    
+                brett->setPM(coll - i, row - i);
+                brett->colorTile(coll - i, row - i, "green");
+
+            }
+            // obenlinks
+
+            if(!endOL) {    
+                brett->setPM(coll - i, row + i);
+                brett->colorTile(coll - i, row + i, "green");
+
+            }
+    }
+    
+}
 #endif

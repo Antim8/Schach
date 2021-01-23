@@ -30,7 +30,7 @@ class Figur {
         bool getColor();
     
         void setPos(int coll, int row);
-        void showMovement();
+        
                
 };
 
@@ -45,7 +45,7 @@ Figur::~Figur() {
  
     delete pic;
     std::cout << "destr" << endl;
-}
+};
 
 Figur::Figur(int coll, int row, bool color) {
     this->row = row;
