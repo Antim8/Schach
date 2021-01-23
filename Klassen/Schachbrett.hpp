@@ -11,16 +11,20 @@ class Schachbrett {
         SVG *feld;
         Rect* tiles[13][10];
         string order[8][8] = {""};
+        string pM[8][8] = {""};
     
     public: 
         
         Schachbrett();
         void startingOrder();
         SVG *getFeld();
-        void colorTile(int coll, int row);
-        void resetColor(int coll, int row);
+        void colorTile(int coll, int row, string color);
+        void resetColor();
         string getTileFig( int coll, int row);
         string setTileFig(int coll, int row, string tileFig);
+        string getPM(int coll, int row);
+        void setPM(int coll, int row);
+        void resetPM();
 };
             
         
@@ -123,15 +127,18 @@ SVG *Schachbrett::getFeld() {
     return feld;
 };
 
-void Schachbrett::colorTile(int coll, int row) {
+void Schachbrett::colorTile(int coll, int row, string color) {
     if(row > 0 && coll > 0)
-        tiles[coll][row]->setColor("blue");
+        tiles[coll][row]->setColor(color);
         
 };
 
-void Schachbrett::resetColor(int coll, int row) {
-    if(row > 0 && coll > 0)
-        tiles[coll][row]->setColor("transparent");
+void Schachbrett::resetColor() {
+    for(int i = 1; i <= 8; i++) {
+        for (int j = 1; j <= 8; j++) {
+            tiles[i][j]->setColor("transparent");
+        }
+    }
         
 };
 
@@ -155,5 +162,26 @@ string Schachbrett::setTileFig(int coll, int row, string tileFig) {
     
 };
 
-      
+string Schachbrett::getPM(int coll, int row) {
+    
+    return pM[coll - 1][row - 1];
+    
+}
+
+void Schachbrett::setPM(int coll, int row) {
+    
+    pM[coll - 1][row - 1] = "p";
+
+}
+
+void Schachbrett::resetPM(){
+    
+    for(int i = 1; i <= 8; i++) {
+        for (int j = 1; j <= 8; j++) {
+            pM[i][j] = "";
+        }
+    }
+
+}
+    
 #endif
