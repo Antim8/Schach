@@ -21,7 +21,7 @@ class Figur {
         
         Figur();
         ~Figur();
-        Figur(int row, int coll, bool color);
+        Figur(int coll, int row, bool color);
     
         int getRow();
         int getColl();
@@ -29,9 +29,9 @@ class Figur {
         string getDesc();
         bool getColor();
     
-        void setPos(int row, int coll);
+        void setPos(int coll, int row);
         void showMovement();
-        void colorIfAvailable(int row, int coll, int drow, int dcoll, int steps, Schachbrett *brett);
+        void colorIfAvailable(int coll, int row, int dcoll, int drow, int steps, Schachbrett *brett);
                
 };
 
@@ -48,7 +48,7 @@ Figur::~Figur() {
     std::cout << "destr" << endl;
 }
 
-Figur::Figur(int row, int coll, bool color) {
+Figur::Figur(int coll, int row, bool color) {
     this->row = row;
     this->coll = coll;
     desc = "f";
@@ -71,10 +71,10 @@ bool Figur::getColor() {
     return color;
 };
 
-void Figur::setPos(int row, int coll) {
+void Figur::setPos(int coll, int row) {
     this->row = row;
     this->coll = coll;
-    pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
+    pic->moveTo(row * 60 + 40, 610 - coll * 60 - 30);
 };
 
 /*vector<int> Figur::colorIfAvailable(int row, int coll, int drow, int dcoll, Schachbrett *brett){
@@ -93,18 +93,19 @@ void Figur::setPos(int row, int coll) {
         return colorIfAvailable(row + (drow - 2 * !color) * abs(drow), coll + dcoll, drow, dcoll, brett);
 }*/
 
-void Figur::colorIfAvailable(int row, int coll, int drow, int dcoll, int steps, Schachbrett *brett){
-    if(row > 8 || row < 1 || coll > 8 || coll < 1 || steps <= 0 || (brett->getTileFig(row,coll)[2] == 'w' && color) ||
-       (brett->getTileFig(row,coll)[2] == 'b' && !color)) {
+void Figur::colorIfAvailable(int coll, int row, int dcoll, int drow, int steps, Schachbrett *brett){
+    if(row > 8 || row < 1 || coll > 8 || coll < 1 || steps <= 0 || (brett->getTileFig(coll, row)[2] == 'w' && color) ||
+       (brett->getTileFig(coll, row)[2] == 'b' && !color)) {
+        cout << 1 << endl;
         return;
-    }else if((brett->getTileFig(row, coll)[2] == 'w' && !color) || (brett->getTileFig(row, coll)[2] == 'b' && color)){
-        brett->setPossibleMovement(row, coll);
-        brett->colorTile(row, coll, "green");
+    }else if((brett->getTileFig(coll, row)[2] == 'w' && !color) || (brett->getTileFig(coll, row)[2] == 'b' && color)){
+        brett->setPossibleMovement(coll, row);
+        brett->colorTile(coll, row, "green");
         return;
     } else {
-        brett->setPossibleMovement(row, coll);
-        brett->colorTile(row, coll, "green");
-        return colorIfAvailable(row + drow, coll + dcoll, drow, dcoll, steps - 1, brett);
+        brett->setPossibleMovement(coll, row);
+        brett->colorTile(coll, row, "green");
+        return colorIfAvailable(coll + dcoll, row + drow, dcoll, drow, steps - 1, brett);
     }
 }
 

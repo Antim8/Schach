@@ -8,8 +8,8 @@ class Koenig : Figur {
     public:
     
         Koenig();
-        Koenig(int row, int coll, bool color, SVG *view);
-        void setPos(int row, int coll);
+        Koenig(int coll, int row, bool color, SVG *view);
+        void setPos(int coll, int row);
         void showMovement(Schachbrett *brett);
 };
 
@@ -19,7 +19,7 @@ Koenig::Koenig() {
     this->desc = "k";
 };
 
-Koenig::Koenig(int row, int coll, bool color, SVG *view) {
+Koenig::Koenig(int coll, int row, bool color, SVG *view) {
     this->row = row;
     this->coll = coll;
     desc = "k";
@@ -42,21 +42,21 @@ void Koenig::setPos(int coll, int row) {
 void Koenig::showMovement(Schachbrett *brett) {
         
     // nach oben
-    colorIfAvailable(row + 1, coll, 1, 0, 1, brett);
+    colorIfAvailable(coll, row + 1, 0, 1, 1, brett);
     // nach unten
-    colorIfAvailable(row - 1, coll, -1, 0, 1, brett);
+    colorIfAvailable(coll, row - 1, 0, -1, 1, brett);
     // nach rechts
-    colorIfAvailable(row, coll + 1, 0, 1, 1, brett);
+    colorIfAvailable(coll + 1, row, 1, 0, 1, brett);
     // nach links
-    colorIfAvailable(row, coll - 1, 0, -1, 1, brett);
+    colorIfAvailable(coll - 1, row, -1, 0, 1, brett);
     // nach oben rechts
-    colorIfAvailable(row + 1, coll + 1, 1, 1, 1, brett); 
+    colorIfAvailable(coll + 1, row + 1, 1, 1, 1, brett); 
     // nach unten rechts
-    colorIfAvailable(row - 1, coll + 1, -1, 1, 1, brett); 
+    colorIfAvailable(coll + 1, row - 1, 1, -1, 1, brett); 
     // nach unten links
-    colorIfAvailable(row - 1, coll - 1, -1, -1, 1, brett); 
+    colorIfAvailable(coll - 1, row - 1, -1, -1, 1, brett); 
     // nach oben links
-    colorIfAvailable(row + 1, coll - 1, 1, -1, 1, brett); 
+    colorIfAvailable(coll - 1, row + 1, -1, 1, 1, brett); 
     
 }
 

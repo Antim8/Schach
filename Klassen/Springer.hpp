@@ -8,8 +8,8 @@ class Springer : Figur {
     public:
     
         Springer();
-        Springer(int row, int coll, bool color, SVG *view);
-        void setPos(int row, int coll);
+        Springer(int coll, int row, bool color, SVG *view);
+        void setPos(int coll, int row);
         void showMovement(Schachbrett *brett);
 };
 
@@ -19,7 +19,7 @@ Springer::Springer() {
     this->desc = "s";
 };
 
-Springer::Springer(int row, int coll, bool color, SVG *view) {
+Springer::Springer(int coll, int row, bool color, SVG *view) {
     this->row = row;
     this->coll = coll;
     desc = "s";
@@ -39,14 +39,18 @@ void Springer::setPos(int coll, int row) {
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
 };
 
-void Laeufer::showMovement(Schachbrett *brett) {
+void Springer::showMovement(Schachbrett *brett) {
     //nach oben rechts
-    colorIfAvailable(row + 2, coll + 1, 0, 0, 1, brett);
+    colorIfAvailable(coll + 1, row + 2, 0, 0, 1, brett);
+    colorIfAvailable(coll + 2, row + 1, 0, 0, 1, brett);
     //nach oben links
-    colorIfAvailable(row + 2, coll - 1, 0, 0, 1, brett);
+    colorIfAvailable(coll - 1, row + 2, 0, 0, 1, brett);
+    colorIfAvailable(coll - 2, row + 1, 0, 0, 1, brett);
     //nach unten links
-    colorIfAvailable(row - 2, coll - 1, 0, 0, 1, brett);
+    colorIfAvailable(coll - 1, row - 2, 0, 0, 1, brett);
+    colorIfAvailable(coll - 2, row - 1, 0, 0, 1, brett);
     //nach unten rechts
-    colorIfAvailable(row - 2, coll + 1, 0, 0, 1, brett);
+    colorIfAvailable(coll + 1, row - 2, 0, 0, 1, brett);
+    colorIfAvailable(coll + 2, row - 1, 0, 0, 1, brett);
 };
 #endif
