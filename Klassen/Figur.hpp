@@ -21,7 +21,7 @@ class Figur {
         
         Figur();
         ~Figur();
-        Figur(int row, int coll, bool color);
+        Figur(int coll, int row, bool color);
     
         int getRow();
         int getColl();
@@ -29,7 +29,7 @@ class Figur {
         string getDesc();
         bool getColor();
     
-        void setPos(int row, int coll);
+        void setPos(int coll, int row);
         void showMovement();
                
 };
@@ -47,7 +47,7 @@ Figur::~Figur() {
     std::cout << "destr" << endl;
 }
 
-Figur::Figur(int row, int coll, bool color) {
+Figur::Figur(int coll, int row, bool color) {
     this->row = row;
     this->coll = coll;
     desc = "f";
@@ -70,7 +70,7 @@ bool Figur::getColor() {
     return color;
 };
 
-void Figur::setPos(int row, int coll) {
+void Figur::setPos(int coll, int row) {
     this->row = row;
     this->coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);

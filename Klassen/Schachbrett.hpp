@@ -17,10 +17,10 @@ class Schachbrett {
         Schachbrett();
         void startingOrder();
         SVG *getFeld();
-        void colorTile(int row, int coll);
-        void resetColor(int row, int coll);
-        string getTileFig( int row, int coll);
-        string setTileFig(int row, int coll, string tileFig);
+        void colorTile(int coll, int row);
+        void resetColor(int coll, int row);
+        string getTileFig( int coll, int row);
+        string setTileFig(int coll, int row, string tileFig);
 };
             
         
@@ -102,17 +102,17 @@ void Schachbrett::startingOrder() {
     for ( int i = 0; i < 2; i++) {
         for (int j = 0; j < 8; j++) {
             
-            order[7 * i][j] = storder[j];
+            //order[j][7* i] = storder[j];
             
             if (i) {
-                order[7 * i][j] = storder[j] + "b";
+                order[j][7 * i] = storder[j] + "b";
             } else {
-                order[7 * i][j] = storder[j] + "w";
+                order[j][7 * i] = storder[j] + "w";
             }
             
             //TODO: Bauern hinzu
-            order[6][j] = "b" + to_string(j) + "b";
-            order[1][j] = "b" + to_string(j) + "w";
+            order[j][6] = "b" + to_string(j) + "b";
+            order[j][1] = "b" + to_string(j) + "w";
         }
     }
     
@@ -123,22 +123,22 @@ SVG *Schachbrett::getFeld() {
     return feld;
 };
 
-void Schachbrett::colorTile(int row, int coll) {
+void Schachbrett::colorTile(int coll, int row) {
     if(row > 0 && coll > 0)
-        tiles[row][coll]->setColor("blue");
+        tiles[coll][row]->setColor("blue");
         
 };
 
-void Schachbrett::resetColor(int row, int coll) {
+void Schachbrett::resetColor(int coll, int row) {
     if(row > 0 && coll > 0)
-        tiles[row][coll]->setColor("transparent");
+        tiles[coll][row]->setColor("transparent");
         
 };
 
 
-string Schachbrett::getTileFig(int row, int coll) {
+string Schachbrett::getTileFig(int coll, int row) {
     if (row > 0 && coll > 0)
-        return order[row - 1][coll - 1];//(order[row - 1][coll - 1][0] + order[row - 1][coll - 1][1]); 
+        return order[coll - 1][row - 1];//(order[row - 1][coll - 1][0] + order[row - 1][coll - 1][1]); 
     else 
         return "";
     
@@ -146,8 +146,8 @@ string Schachbrett::getTileFig(int row, int coll) {
 
 string Schachbrett::setTileFig(int coll, int row, string tileFig) {
  //TODO
-    string figOnTile = getTileFig(row, coll);
-    order[row - 1][coll - 1] = tileFig;
+    string figOnTile = getTileFig(coll, row);
+    order[coll - 1][row - 1] = tileFig;
     if (figOnTile[0] != 'k') 
         return figOnTile;
     else
