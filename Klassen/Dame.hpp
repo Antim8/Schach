@@ -8,8 +8,8 @@ class Dame : Figur {
     public:
     
         Dame();
-        Dame(int row, int coll, bool color, SVG *view);
-        void setPos(int row, int coll);
+        Dame(int coll, int row, bool color, SVG *view);
+        void setPos(int coll, int row);
 };
 
 Dame::Dame() {
@@ -18,7 +18,7 @@ Dame::Dame() {
     this->desc = "d";
 };
 
-Dame::Dame(int row, int coll, bool color, SVG *view) {
+Dame::Dame(int coll, int row, bool color, SVG *view) {
     this->row = row;
     this->coll = coll;
     desc = "d";

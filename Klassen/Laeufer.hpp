@@ -8,8 +8,8 @@ class Laeufer : Figur {
     public:
     
         Laeufer();
-        Laeufer(int row, int coll, bool color, SVG *view);
-        void setPos(int row, int coll);
+        Laeufer(int coll, int row, bool color, SVG *view);
+        void setPos(int coll, int row);
 };
 
 Laeufer::Laeufer() {
@@ -18,7 +18,7 @@ Laeufer::Laeufer() {
     this->desc = "l";
 };
 
-Laeufer::Laeufer(int row, int coll, bool color, SVG *view) {
+Laeufer::Laeufer(int coll, int row, bool color, SVG *view) {
     this->row = row;
     this->coll = coll;
     desc = "l";

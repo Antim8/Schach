@@ -8,8 +8,8 @@ class Springer : Figur {
     public:
     
         Springer();
-        Springer(int row, int coll, bool color, SVG *view);
-        void setPos(int row, int coll);
+        Springer(int coll, int row, bool color, SVG *view);
+        void setPos(int coll, int row);
 };
 
 Springer::Springer() {
@@ -18,7 +18,7 @@ Springer::Springer() {
     this->desc = "s";
 };
 
-Springer::Springer(int row, int coll, bool color, SVG *view) {
+Springer::Springer(int coll, int row, bool color, SVG *view) {
     this->row = row;
     this->coll = coll;
     desc = "s";

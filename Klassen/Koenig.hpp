@@ -8,8 +8,8 @@ class Koenig : Figur {
     public:
     
         Koenig();
-        Koenig(int row, int coll, bool color, SVG *view);
-        void setPos(int row, int coll);
+        Koenig(int coll, int row, bool color, SVG *view);
+        void setPos(int coll, int row);
 };
 
 Koenig::Koenig() {
@@ -18,7 +18,7 @@ Koenig::Koenig() {
     this->desc = "k";
 };
 
-Koenig::Koenig(int row, int coll, bool color, SVG *view) {
+Koenig::Koenig(int coll, int row, bool color, SVG *view) {
     this->row = row;
     this->coll = coll;
     desc = "k";

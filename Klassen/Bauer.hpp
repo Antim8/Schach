@@ -10,9 +10,9 @@ class Bauer : Figur {
         
         Bauer();
         //~Bauer();
-        Bauer(int row, int coll, bool color, SVG *view);
+        Bauer(int coll, int row, bool color, SVG *view);
         
-        void setPos(int row, int coll);
+        void setPos(int coll, int row);
         
     
 };
@@ -28,7 +28,7 @@ Bauer::Bauer() {
     std::cout << "Bauer destr" << endl;
 }*/
 
-Bauer::Bauer(int row, int coll, bool color, SVG *view) {
+Bauer::Bauer(int coll, int row, bool color, SVG *view) {
     this->row = row;
     this->coll = coll;
     desc = "b";
