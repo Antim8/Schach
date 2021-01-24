@@ -74,30 +74,6 @@ Schachbrett::Schachbrett() {
     
 };
 
-/*void Schachbrett::startingOrder() {
-    
-    string storder[] = {"t0", "s0", "l0", "d ", "k ", "l1", "s1", "t1"}; 
-    
-    for ( int i = 0; i < 2; i++) {
-        for (int j = 0; j < 8; j++) {
-            
-            order[7 * i][j][0] = storder[j];
-            
-            if (i) {
-                order[7 * i][j][1] = "b";
-            } else {
-                order[7 * i][j][1] = "w";
-            }
-            
-            //TODO: Bauern hinzu
-            order[6][j][0] = "b" + to_string(j);
-            order[6][j][1] = "b";
-            order[1][j][0] = "b" + to_string(j);
-            order[1][j][1] = "w";
-        }
-    }
-    
-};*/
 
 void Schachbrett::startingOrder() {
     
@@ -114,7 +90,7 @@ void Schachbrett::startingOrder() {
                 order[j][7 * i] = storder[j] + "w";
             }
             
-            //TODO: Bauern hinzu
+            
             order[j][6] = "b" + to_string(j) + "b";
             order[j][1] = "b" + to_string(j) + "w";
         }
@@ -130,6 +106,7 @@ SVG *Schachbrett::getFeld() {
 void Schachbrett::colorTile(int coll, int row, string color) {
     if(row > 0 && coll > 0)
         tiles[coll][row]->setColor(color);
+        tiles[coll][row]->setStrokeWidth(2);
         
 };
 
@@ -176,8 +153,8 @@ void Schachbrett::setPM(int coll, int row) {
 
 void Schachbrett::resetPM(){
     
-    for(int i = 1; i <= 8; i++) {
-        for (int j = 1; j <= 8; j++) {
+    for(int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
             pM[i][j] = "";
         }
     }

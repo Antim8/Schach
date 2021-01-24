@@ -90,7 +90,7 @@ void Bauer::showMovement(Schachbrett *brett) {
             brett->setPM(coll + 1, row - 1);
             brett->colorTile(coll + 1, row - 1, "green");
         }
-        if (brett->getTileFig(coll - 1, row - 1)[2] == 'b' && (row - 1) >= 1 && (coll - 1) >= 1) {
+        if (brett->getTileFig(coll - 1, row - 1)[2] == 'w' && (row - 1) >= 1 && (coll - 1) >= 1) {
             brett->setPM(coll - 1, row - 1);
             brett->colorTile(coll - 1, row - 1, "green");
         }
