@@ -9,20 +9,22 @@ class Laeufer : Figur {
     
         Laeufer();
         Laeufer(int coll, int row, bool color, SVG *view);
+    
         void setPos(int coll, int row);
         void showMovement(Schachbrett *brett);
 };
 
 Laeufer::Laeufer() {
+    
     this->row = 0;
     this->coll = 0;
-    this->desc = "l";
+    
 };
 
 Laeufer::Laeufer(int coll, int row, bool color, SVG *view) {
+    
     this->row = row;
     this->coll = coll;
-    desc = "l";
     this->color = color;
     
     if (color) {
@@ -34,18 +36,22 @@ Laeufer::Laeufer(int coll, int row, bool color, SVG *view) {
 };
 
 void Laeufer::setPos(int coll, int row) {
+    
     this-> row = row;
     this-> coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
+    
 };
 
+// siehe Dame
 void Laeufer::showMovement(Schachbrett *brett) {
     
     bool endOR = false;
     bool endUR = false;
     bool endUL = false;
     bool endOL = false;
-    for(int i = 1; i <8; i++) {
+    
+    for(int i = 1; i < 8; i++) {
 
         if ((brett->getTileFig(coll + i - 1, row + i - 1)[2] == 'b' && color) ||
             (brett->getTileFig(coll + i - 1, row + i - 1)[2] == 'w' && !color) ||
@@ -74,28 +80,32 @@ void Laeufer::showMovement(Schachbrett *brett) {
 
             // obenrechts
 
-            if (!endOR) {    
+            if (!endOR) { 
+                
                 brett->setPM(coll + i, row + i);
                 brett->colorTile(coll + i, row + i, "green");
 
             }
             // untenrechts
 
-            if(!endUR) {    
+            if(!endUR) {  
+                
                 brett->setPM(coll + i, row - i);
                 brett->colorTile(coll + i, row - i, "green");
 
             }
             // untenlinks
 
-            if(!endUL) {    
+            if(!endUL) { 
+                
                 brett->setPM(coll - i, row - i);
                 brett->colorTile(coll - i, row - i, "green");
 
             }
             // obenlinks
 
-            if(!endOL) {    
+            if(!endOL) { 
+                
                 brett->setPM(coll - i, row + i);
                 brett->colorTile(coll - i, row + i, "green");
 

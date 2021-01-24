@@ -9,21 +9,23 @@ class Turm : Figur {
     
         Turm();
         Turm(int coll, int row, bool color, SVG *view);
+    
         void showMovement(Schachbrett *brett);
         void setPos(int coll, int row);
     
 };
 
 Turm::Turm() {
+    
     this->row = 0;
     this->coll = 0;
-    this->desc = "t";
+    
 };
 
 Turm::Turm(int coll, int row, bool color, SVG *view) {
+    
     this->row = row;
     this->coll = coll;
-    desc = "t";
     this->color = color;
     
     if (color) {
@@ -34,7 +36,9 @@ Turm::Turm(int coll, int row, bool color, SVG *view) {
     
 };
 
+// siehe Dame
 void Turm::showMovement(Schachbrett *brett) {
+    
     bool endO = false;
     bool endU = false;
     bool endR = false;
@@ -58,34 +62,30 @@ void Turm::showMovement(Schachbrett *brett) {
            (brett->getTileFig(coll - i,row)[2] == 'b' && !color) || (brett->getTileFig(coll - i, row)[2] == 'w' && color) || (coll - i) < 1)
             endL = true;        
         
-        // oben
-        //if ( ((row + i) <= 8) && ((brett->getTileFig(coll, row + i) == "") || (brett->getTileFig(coll, row + i)[2] == 'w' && !color) ||
-        //                          (brett->getTileFig(coll, row + i)[2] == 'b' && color))) {
-        if (!endO) {    
+
+        if (!endO) {  
+            
             brett->setPM(coll, row + i);
             brett->colorTile(coll, row + i, "green");
             
         }
-        // unten
-        //if ( ((row - i) >= 1) && ((brett->getTileFig(coll, row - i) == "") || (brett->getTileFig(coll, row - i)[2] == 'w' && !color) ||
-        //                          (brett->getTileFig(coll, row - i)[2] == 'b' && color))) {
-        if(!endU) {    
+       
+        if(!endU) {   
+            
             brett->setPM(coll, row - i);
             brett->colorTile(coll, row - i, "green");
             
         }
-        // rechts
-        //if ( ((coll + i) <= 8) && ((brett->getTileFig(coll + i, row) == "") || (brett->getTileFig(coll + i, row)[2] == 'w' && !color) ||
-        //                          (brett->getTileFig(coll + i, row)[2] == 'b' && color))) {
-        if(!endR) {    
+       
+        if(!endR) {  
+            
             brett->setPM(coll + i, row);
             brett->colorTile(coll + i, row, "green");
             
         }
-        // links
-        //if ( ((coll - i) >= 1) && ((brett->getTileFig(coll - i, row) == "") || (brett->getTileFig(coll - i, row)[2] == 'w' && !color) ||
-        //                          (brett->getTileFig(coll - i, row)[2] == 'b' && color))) {
-        if(!endL) {    
+        
+        if(!endL) { 
+            
             brett->setPM(coll - i, row);
             brett->colorTile(coll - i, row, "green");
             
@@ -98,9 +98,11 @@ void Turm::showMovement(Schachbrett *brett) {
 };
 
 void Turm::setPos(int coll, int row) {
+    
     this-> row = row;
     this-> coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
+    
 };
 
 #endif
