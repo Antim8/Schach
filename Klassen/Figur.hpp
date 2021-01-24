@@ -10,9 +10,9 @@ class Figur {
     
   
     protected: 
+    
         int row;
         int coll;
-        std::string desc;
         // true = white false = black
         bool color;
         Image *pic;
@@ -26,32 +26,32 @@ class Figur {
         int getRow();
         int getColl();
     
-        string getDesc();
         bool getColor();
-    
         void setPos(int coll, int row);
         
                
 };
 
 Figur::Figur() {
+    
     row = 0;
     coll = 0;
-    desc = "";
     color = true;
+    
 };
-
+// Beim Schlagen/Löschen der Figur wird das Bild explizit entfernt
 Figur::~Figur() {
  
     delete pic;
-    std::cout << "destr" << endl;
+    
 };
 
 Figur::Figur(int coll, int row, bool color) {
+    
     this->row = row;
     this->coll = coll;
-    desc = "f";
     this->color = color;
+    
 };
 
 int Figur::getRow() {
@@ -62,18 +62,17 @@ int Figur::getColl() {
     return coll;
 };
 
-string Figur::getDesc() {
-    return desc;
-};
-
 bool Figur::getColor() {
     return color;
 };
 
+// Verschiebung einer Figur inklusive des zugehörigen Bildes
 void Figur::setPos(int coll, int row) {
+    
     this->row = row;
     this->coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
+    
 };
     
 #endif

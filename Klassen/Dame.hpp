@@ -9,20 +9,22 @@ class Dame : Figur {
     
         Dame();
         Dame(int coll, int row, bool color, SVG *view);
+    
         void setPos(int coll, int row);
         void showMovement(Schachbrett *brett);
 };
 
 Dame::Dame() {
+    
     this->row = 0;
     this->coll = 0;
-    this->desc = "d";
+    
 };
 
 Dame::Dame(int coll, int row, bool color, SVG *view) {
+    
     this->row = row;
     this->coll = coll;
-    desc = "d";
     this->color = color;
     
     if (color) {
@@ -34,13 +36,17 @@ Dame::Dame(int coll, int row, bool color, SVG *view) {
 };
 
 void Dame::setPos(int coll, int row) {
+    
     this-> row = row;
     this-> coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
+    
 };
 
 void Dame::showMovement(Schachbrett *brett) {
     
+    // Variablen zur Feststellung ob der Weg in die jeweilige Richtung blockiert wird oder weiter abgefragt werden kann
+    // Bsp. : Kann nicht über eine Figur hinaus laufen
     bool endO = false;
     bool endU = false;
     bool endR = false;
@@ -50,6 +56,7 @@ void Dame::showMovement(Schachbrett *brett) {
     bool endUL = false;
     bool endOL = false;
     
+    // Abfragen der potentiellen Laufwege
     for (int i = 1; i < 8; i++) {
         
         if ((brett->getTileFig(coll, row + i - 1)[2] == 'b' && color) || (brett->getTileFig(coll, row + i - 1)[2] == 'w' && !color) ||
@@ -94,20 +101,23 @@ void Dame::showMovement(Schachbrett *brett) {
         
         // oben
         if (!endO) {    
+            
             brett->setPM(coll, row + i);
             brett->colorTile(coll, row + i, "green");
             
         }
         // unten
        
-        if(!endU) {    
+        if(!endU) {   
+            
             brett->setPM(coll, row - i);
             brett->colorTile(coll, row - i, "green");
             
         }
         // rechts
         
-        if(!endR) {    
+        if(!endR) {   
+            
             brett->setPM(coll + i, row);
             brett->colorTile(coll + i, row, "green");
             
@@ -115,30 +125,39 @@ void Dame::showMovement(Schachbrett *brett) {
         // links
        
         if(!endL) {    
+            
             brett->setPM(coll - i, row);
             brett->colorTile(coll - i, row, "green");
             
         }
 
         // obenrechts
-        if (!endOR) {    
+        if (!endOR) {  
+            
             brett->setPM(coll + i, row + i);
             brett->colorTile(coll + i, row + i, "green");
+            
         }
         // untenrechts
         if(!endUR) {    
+            
             brett->setPM(coll + i, row - i);
             brett->colorTile(coll + i, row - i, "green");
+            
         }
         // untenlinks
         if(!endUL) {    
+            
             brett->setPM(coll - i, row - i);
             brett->colorTile(coll - i, row - i, "green");
+            
         }
         // obenlinks
         if(!endOL) {    
+            
             brett->setPM(coll - i, row + i);
             brett->colorTile(coll - i, row + i, "green");
+            
         }
        
         

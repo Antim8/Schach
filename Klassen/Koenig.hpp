@@ -9,20 +9,22 @@ class Koenig : Figur {
     
         Koenig();
         Koenig(int coll, int row, bool color, SVG *view);
+    
         void setPos(int coll, int row);
         void showMovement(Schachbrett *brett);
 };
 
 Koenig::Koenig() {
+    
     this->row = 0;
     this->coll = 0;
-    this->desc = "k";
+  
 };
 
 Koenig::Koenig(int coll, int row, bool color, SVG *view) {
+    
     this->row = row;
     this->coll = coll;
-    desc = "k";
     this->color = color;
     
     if (color) {
@@ -34,11 +36,14 @@ Koenig::Koenig(int coll, int row, bool color, SVG *view) {
 };
 
 void Koenig::setPos(int coll, int row) {
+    
     this-> row = row;
     this-> coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
+    
 };
 
+// siehe Dame
 void Koenig::showMovement(Schachbrett *brett) {
     
     bool endO = false;
@@ -93,52 +98,64 @@ void Koenig::showMovement(Schachbrett *brett) {
                 endOL = true;
         
         // oben
-        if (!endO) {    
+        if (!endO) {  
+            
             brett->setPM(coll, row + i);
             brett->colorTile(coll, row + i, "green");
             
         }
         // unten
        
-        if(!endU) {    
+        if(!endU) { 
+            
             brett->setPM(coll, row - i);
             brett->colorTile(coll, row - i, "green");
             
         }
         // rechts
         
-        if(!endR) {    
+        if(!endR) {  
+            
             brett->setPM(coll + i, row);
             brett->colorTile(coll + i, row, "green");
             
         }
         // links
        
-        if(!endL) {    
+        if(!endL) {  
+            
             brett->setPM(coll - i, row);
             brett->colorTile(coll - i, row, "green");
             
         }
 
         // obenrechts
-        if (!endOR) {    
+        if (!endOR) { 
+            
             brett->setPM(coll + i, row + i);
             brett->colorTile(coll + i, row + i, "green");
+            
         }
         // untenrechts
         if(!endUR) {    
+            
             brett->setPM(coll + i, row - i);
             brett->colorTile(coll + i, row - i, "green");
+            
         }
         // untenlinks
         if(!endUL) {    
+            
             brett->setPM(coll - i, row - i);
             brett->colorTile(coll - i, row - i, "green");
+            
         }
         // obenlinks
         if(!endOL) {    
+            
             brett->setPM(coll - i, row + i);
             brett->colorTile(coll - i, row + i, "green");
+            
         }
        
         

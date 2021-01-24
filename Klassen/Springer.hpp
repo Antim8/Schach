@@ -9,20 +9,22 @@ class Springer : Figur {
     
         Springer();
         Springer(int coll, int row, bool color, SVG *view);
+    
         void setPos(int coll, int row);
         void showMovement(Schachbrett *brett);
 };
 
 Springer::Springer() {
+    
     this->row = 0;
     this->coll = 0;
-    this->desc = "s";
+
 };
 
 Springer::Springer(int coll, int row, bool color, SVG *view) {
+    
     this->row = row;
     this->coll = coll;
-    desc = "s";
     this->color = color;
     
     if (color) {
@@ -34,18 +36,23 @@ Springer::Springer(int coll, int row, bool color, SVG *view) {
 };
 
 void Springer::setPos(int coll, int row) {
+    
     this-> row = row;
     this-> coll = coll;
     pic->moveTo(coll * 60 + 40, 610 - row * 60 - 30);
+    
 };
 
+// Bewegungsmöglichkeiten der Springer/Knights im Uhrzeigersinn abgefragt
 void Springer::showMovement(Schachbrett *brett) {
+    
     // obenrechts
     if ((brett->getTileFig(coll + 1, row + 2) == "" || (brett->getTileFig(coll + 1, row + 2)[2] == 'b' && color) ||
        (brett->getTileFig(coll + 1, row + 2)[2] == 'w' && !color)) && (row + 2) <= 8 && (coll + 1) <= 8) {
          
         brett->setPM(coll + 1, row + 2);
         brett->colorTile(coll + 1, row + 2, "green");
+        
     }
     
     if ((brett->getTileFig(coll + 2, row + 1) == "" || (brett->getTileFig(coll + 2, row + 1)[2] == 'b' && color) ||
@@ -53,6 +60,7 @@ void Springer::showMovement(Schachbrett *brett) {
          
         brett->setPM(coll + 2, row + 1);
         brett->colorTile(coll + 2, row + 1, "green");
+        
     }
     
     //untenrechts
@@ -61,6 +69,7 @@ void Springer::showMovement(Schachbrett *brett) {
          
         brett->setPM(coll + 1, row - 2);
         brett->colorTile(coll + 1, row - 2, "green");
+        
     }
     
     if ((brett->getTileFig(coll + 2, row - 1) == "" || (brett->getTileFig(coll + 2, row - 1)[2] == 'b' && color) ||
@@ -68,6 +77,7 @@ void Springer::showMovement(Schachbrett *brett) {
          
         brett->setPM(coll + 2, row - 1);
         brett->colorTile(coll + 2, row - 1, "green");
+        
     }
     
     //untenlinks
@@ -76,6 +86,7 @@ void Springer::showMovement(Schachbrett *brett) {
          
         brett->setPM(coll - 1, row - 2);
         brett->colorTile(coll - 1, row - 2, "green");
+        
     }
     
     if ((brett->getTileFig(coll - 2, row - 1) == "" || (brett->getTileFig(coll - 2, row - 1)[2] == 'b' && color) ||
@@ -83,6 +94,7 @@ void Springer::showMovement(Schachbrett *brett) {
          
         brett->setPM(coll - 2, row - 1);
         brett->colorTile(coll - 2, row - 1, "green");
+        
     }
     
     //obenlinks
@@ -91,6 +103,7 @@ void Springer::showMovement(Schachbrett *brett) {
          
         brett->setPM(coll - 1, row + 2);
         brett->colorTile(coll - 1, row + 2, "green");
+        
     }
     
     if ((brett->getTileFig(coll - 2, row + 1) == "" || (brett->getTileFig(coll - 2, row + 1)[2] == 'b' && color) ||
@@ -98,6 +111,7 @@ void Springer::showMovement(Schachbrett *brett) {
          
         brett->setPM(coll - 2, row + 1);
         brett->colorTile(coll - 2, row + 1, "green");
+        
     }
              
 
